@@ -15,6 +15,7 @@ function LoginForm({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",   // ✅ THIS is the fix
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       setIsLoading(false);

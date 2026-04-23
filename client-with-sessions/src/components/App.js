@@ -6,7 +6,9 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/check_session").then((r) => {
+    fetch("/me", {
+      credentials: "include",
+    }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -19,7 +21,7 @@ function App() {
     <>
       <NavBar user={user} setUser={setUser} />
       <main>
-        <p>You are logged in!</p>
+        <p>You are logged in as {user.username}</p>
       </main>
     </>
   );
